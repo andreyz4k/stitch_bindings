@@ -36,7 +36,7 @@ fn compress_backend(
 }
 
 use std::ffi::CStr;
-use std::os::raw::{c_char, c_float};
+use std::os::raw::c_char;
 
 #[no_mangle]
 pub extern "C" fn compress_backend_c(
@@ -44,8 +44,6 @@ pub extern "C" fn compress_backend_c(
     program_count: usize,
     tasks: *const *const c_char,
     task_count: usize,
-    weights: *const c_float,
-    weight_count: usize,
     name_mapping: *const *const c_char,
     name_mapping_count: usize,
     panic_loud: bool,
@@ -68,16 +66,7 @@ pub extern "C" fn compress_backend_c(
     } else {
         None
     };
-    let weights: Option<Vec<f32>> = if weight_count > 0 {
-        Some(unsafe {
-            std::slice::from_raw_parts(weights, weight_count)
-                .iter()
-                .copied()
-                .collect()
-        })
-    } else {
-        None
-    };
+    let weights: Option<Vec<f32>> = None;
     let name_mapping: Option<Vec<(String, String)>> = if name_mapping_count > 0 {
         Some(unsafe {
             std::slice::from_raw_parts(name_mapping, name_mapping_count)
