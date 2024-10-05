@@ -13,7 +13,7 @@ name = "stitch_core"
 clap = {version = "3.1.0"}
 pyo3 = {version = "0.17.3", features = ["extension-module"]}
 # stitch_core = {path = "../stitch"}
-stitch_core = {git = "https://github.com/andreyz4k/stitch", branch = "main"}
+stitch_core = {git = "https://github.com/andreyz4k/stitch", commit = "59cc81e518f1a53d90a0dcce69989423c6b6ff81"}
 
 [build-dependencies]
 pyo3-build-config = "0.17.3"
