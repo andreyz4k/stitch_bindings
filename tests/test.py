@@ -41,7 +41,7 @@ with open('../data/dc/origami/iteration_0_3.json','r') as f:
     dreamcoder_json = json.load(f)
 kwargs = from_dreamcoder(dreamcoder_json)
 res = compress(**kwargs, iterations=3, max_arity=3)
-assert res.abstractions[0].body == '(if (empty? (cdr #0)) #2 (#1 (cdr #0)))'
+assert res.abstractions[0].body == '(if (empty? (cdr #1)) #2 (#0 (cdr #1)))'
 
 
 # StitchException: passing in an argument that doesn't actually exist

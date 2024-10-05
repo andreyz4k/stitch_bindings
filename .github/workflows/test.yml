@@ -19,6 +19,11 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: rustup update stable && rustup default stable
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
       - run: python3 -m pip install prettytable matplotlib seaborn
       - name: build
         run: make build
